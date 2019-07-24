@@ -1,0 +1,25 @@
+The python implementation you have in the folder py_imp works in that it
+produces the same results as McQueeny's code and my hand calculation using
+McQueeny's algorithm, both for the simple anti-ferromagnet.
+
+Right now this just produces the structure factor.  I left out k'/k, r_0,
+formfactor...
+
+You still need to fix up the C version and CUDA C version to match this version.
+
+Right now I am working on trying to get the same numbers as the paper for the
+body-center cubic anti-ferromagnet.  I tried using space group 229 with 2 atoms
+in the unit cell with the python code in py_imp and did not get the smae answer
+as the paper.  Now I am playing with mCQueeny's code to try to get it - I
+just started doingthis and haven't gotten any results yet.  The code in
+spinwave_fortran/spnwaves_mcqueeny/source_mod should be set up to do this -
+Everything but the structure factor has been commented out.
+
+
+I think Bill's code is probably wrong becuase I just get a constant structure
+factor for any lattice I try (I removed k'/k, other constants, etc.)
+
+Road Forward:
+Verify the BCC case (hopefully)
+Get C code to match python and mcqueeny
+Get CUDA C code to match python and mcqueeny / port ZGEEV to CUDA

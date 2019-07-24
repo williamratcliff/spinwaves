@@ -1,0 +1,3 @@
+LIBRARY mcQueeny_C_alg.pyd
+EXPORTS
+initmcQueeny_C_alg
