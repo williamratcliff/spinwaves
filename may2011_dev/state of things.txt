@@ -1,0 +1,37 @@
+What We've been doing:
+
+I took McQueeny's Fortran Code, which is a numerical cross-section caclulation for matrials with spins all along the same axis, and converted it to python, so that it could eb called from out program.  then to make it faster, I implemented most of it in C using Cython and got ~100x speedup.  That is currently in the svn repo (I think that was finished in March or April 2011).  Then, to speed it up further, we decided to run it on a GPU cluster (sparkle).  You have an account on sparkle.ncnr.nist.gov, where you have been playing with this.  The code you have there is also in this folder.
+
+First, you had to get the eigendecomposition working in C so that that could also be run on the GPU(you couldn't keep going back and forth).  You took some NIST code called TNT/JAMA and comverted it from C++ to C and then got that to work with CUDA C on the GPU.  Now you are currently working on getting the C cross section code runnin gon the GPU in parallel.  All this work shoul dbe in McQueeny_Alg.cu in the sparkle folder.
+You have been playing with this file a lot though so there is also stuff you don't need or that is in the middle of development.
+
+
+
+Right now, the python version of the cross section calculation is using cython to call C routines.  The results of this still need to be tested (I don't think I actually did a side by side comparison with test cases).  The code was just converted from python (which was converted from McQueeny's Fortran Code), but I found one place where it seems the calculation(in python and converted C) is different than McQueeny's paper, so the two should be compared.
+
+Currently, I am working on moving the same code over to the GPU.  I am accomplishing this by writting CUDA C and using ctypes to call my functions from python.  that way I don;t have to leanr pyCUDA and I can just use CUDA C as outlined in William's book, CUDA By Example, which I like.
+
+The python driver file for what I'm currently working on is "...csec/ctype_driver.py".
+
+When I run a test function 0-1000 times on the GPU, the time vs. calculations goes up like a staircase, which is logical.  The time vs. eigendecompositions graph, on the other hand, looks pretty much linear, which is strange.  It's slope, however, is shallow, which is good (i.e. doing 10 calculations takes much less than 10x the time of doing 1, so I guess we don't have a problem).
+
+
+Files:
+======
+
+In Sparkle folder:
+
+McQueeny_Alg.cu has the gpu eigendecomposition code
+ctype_driver.py has some smaple python code to call functions from CUDA C
+
+
+In Desktop_Comp folder:
+
+This folder should contain code for executing the cross section in C via cython (on a CPU, not GPU).
+Relevant Code should be in spinwaves/spinwaves/cross_section/cython.
+
+I kept the rest just in case there is other stuff there I don't want to loose.
+
+NIST WORK\Desktop_Comp\spinwaves\spinwaves\cross_section\cython\mcQueeny_C_alg.pyx has a description of how compiling the cython works.
+
+The code in that folder (mcQueeny_C_alg.pyx, McQueeny_alg.c, McQueeny_Alg.h, and cMcQueenyAlg.pxd) get combined into mcQueeny_C_alg.c, which is compiled to make mcQueeny_C_alg.pyd, which can be called in python.  I was compiling that file then copying it to the cross section folder(the parent dir of cython) and running csection_calc.py, which has some code to test it (basically just that it runs I think).
