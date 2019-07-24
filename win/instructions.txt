@@ -1,0 +1,5 @@
+-Compile the monte carlo dll/pyd
+-Change the line in CSim for importing _monteCarlo.pyd
+  Or just run make_exe.bat if the MonteCarlo.CSim has not been changed since the local copy
+-run python setup.py py2exe
+-run inno setup

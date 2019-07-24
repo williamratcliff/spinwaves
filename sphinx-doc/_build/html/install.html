@@ -1,0 +1,184 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Installing Spinwaves &mdash; Spinwaves v0.1 documentation</title>
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.1',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Spinwaves v0.1 documentation" href="index.html" />
+    <link rel="next" title="Getting Started" href="model.html" />
+    <link rel="prev" title="Welcome to Spinwaves’s documentation!" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="model.html" title="Getting Started"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to Spinwaves’s documentation!"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Spinwaves v0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="installing-spinwaves">
+<h1>Installing Spinwaves<a class="headerlink" href="#installing-spinwaves" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="windows-users">
+<h2>Windows Users<a class="headerlink" href="#windows-users" title="Permalink to this headline">¶</a></h2>
+<p>The easiest way for windows users to install the application is with the latest
+windows installer available at:</p>
+<blockquote>
+<a class="reference external" href="http://code.google.com/p/spinwaves/downloads/list">http://code.google.com/p/spinwaves/downloads/list</a></blockquote>
+</div>
+<div class="section" id="installing-from-source">
+<h2>Installing From Source<a class="headerlink" href="#installing-from-source" title="Permalink to this headline">¶</a></h2>
+<p>You must have python2.4 or python2.6 installed on your computer.</p>
+<p>The latest source code can be downloaded from the svn repository:</p>
+<div class="highlight-python"><pre>$ svn co http://spinwaves.googlecode.com/svn/trunk</pre>
+</div>
+<p>Then from the main source directory run:</p>
+<div class="highlight-python"><pre>$ python setup.py install</pre>
+</div>
+<p>This should resolve all dependencies via easy_install and the program can now be run from the shell with:</p>
+<div class="highlight-python"><pre>$ spinwaves</pre>
+</div>
+</div>
+<div class="section" id="dependencies">
+<h2>Dependencies<a class="headerlink" href="#dependencies" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<p>The Spinwaves application requires the following third party pieces of software to run:</p>
+<ul class="simple">
+<li>Python 2.5-2.6</li>
+<li>wxPython</li>
+<li>numpy</li>
+<li>matplotlib</li>
+<li>sympy</li>
+<li>scipy</li>
+<li>vtk</li>
+<li>Python-Multiprocessing (Python2.5)</li>
+</ul>
+<p>If you are using Python2.5, a back port of the multiprocessing package
+must be installed.  It can be found here:</p>
+<blockquote>
+<a class="reference external" href="http://code.google.com/p/python-multiprocessing/">http://code.google.com/p/python-multiprocessing/</a></blockquote>
+<p>Most Linux distributions will come with a version of Python.  To check
+your version, open python in the shell.  The version will be printed.</p>
+<p>Vtk can be acquired from:</p>
+<blockquote>
+<a class="reference external" href="http://www.vtk.org">http://www.vtk.org</a></blockquote>
+<p>All other dependencies should be handled automatically by setuptools
+when the setup.py script is run.  However, since this has proven to be
+error-prone alternate methods of resolving these dependencies have been
+given below.</p>
+</blockquote>
+<div class="section" id="ubuntu-debian-any-distribution-using-aptitude-users">
+<h3>Ubuntu/Debian/Any Distribution using Aptitude Users<a class="headerlink" href="#ubuntu-debian-any-distribution-using-aptitude-users" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<p>A shell script has been included to automatically download all
+dependencies (other than Python itself) using aptitude.  The script
+will download and install the current versions of numpy, matplotlib,
+sympy, scipy, and vtk.  wxPython2.8 will be installed, although 2.6 will
+work as well.  From the top level source folder, type:</p>
+<div class="highlight-python"><pre>$ bash dependencies.sh</pre>
+</div>
+<p>If you are using Python2.5, a back port of the multiprocessing package
+must be installed.  It can be found here:</p>
+<blockquote>
+<a class="reference external" href="http://code.google.com/p/python-multiprocessing/">http://code.google.com/p/python-multiprocessing/</a></blockquote>
+</blockquote>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <h3><a href="index.html">Table Of Contents</a></h3>
+            <ul>
+<li><a class="reference external" href="">Installing Spinwaves</a><ul>
+<li><a class="reference external" href="#windows-users">Windows Users</a></li>
+<li><a class="reference external" href="#installing-from-source">Installing From Source</a></li>
+<li><a class="reference external" href="#dependencies">Dependencies</a><ul>
+<li><a class="reference external" href="#ubuntu-debian-any-distribution-using-aptitude-users">Ubuntu/Debian/Any Distribution using Aptitude Users</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            <h4>Previous topic</h4>
+            <p class="topless"><a href="index.html"
+                                  title="previous chapter">Welcome to Spinwaves&#8217;s documentation!</a></p>
+            <h4>Next topic</h4>
+            <p class="topless"><a href="model.html"
+                                  title="next chapter">Getting Started</a></p>
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="_sources/install.txt"
+                     rel="nofollow">Show Source</a></li>
+            </ul>
+          <div id="searchbox" style="display: none">
+            <h3>Quick search</h3>
+              <form class="search" action="search.html" method="get">
+                <input type="text" name="q" size="18" />
+                <input type="submit" value="Go" />
+                <input type="hidden" name="check_keywords" value="yes" />
+                <input type="hidden" name="area" value="default" />
+              </form>
+              <p class="searchtip" style="font-size: 90%">
+              Enter search terms or a module, class or function name.
+              </p>
+          </div>
+          <script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="model.html" title="Getting Started"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to Spinwaves’s documentation!"
+             >previous</a> |</li>
+        <li><a href="index.html">Spinwaves v0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2009, Thomas Sarvey, William Ratcliff, William Flynn.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.6.3.
+    </div>
+  </body>
+</html>

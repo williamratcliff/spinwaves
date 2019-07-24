@@ -1,0 +1,165 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Getting Started &mdash; Spinwaves v0.1 documentation</title>
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.1',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Spinwaves v0.1 documentation" href="index.html" />
+    <link rel="next" title="Finding the Ground State" href="ground_state.html" />
+    <link rel="prev" title="Installing Spinwaves" href="install.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="ground_state.html" title="Finding the Ground State"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="install.html" title="Installing Spinwaves"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Spinwaves v0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="getting-started">
+<h1>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h1>
+<p>After installing, execute the program from the shell.</p>
+<div class="highlight-python"><pre>$ spinwaves</pre>
+</div>
+<p>Several windows will appear:</p>
+<blockquote>
+<ul>
+<li><p class="first"><strong>The Main Window</strong></p>
+<img alt="_images/mainScreen1.png" src="_images/mainScreen1.png" />
+<p>This is the window and is where 3D images of the crystal lattice will be rendered.</p>
+</li>
+<li><p class="first"><strong>The Crystallographic Information Window</strong></p>
+<img alt="_images/Screenshot-Crystallographic_Information1.png" src="_images/Screenshot-Crystallographic_Information1.png" />
+<p>This window is used to enter information about the crystallographic unit cell.</p>
+</li>
+<li><p class="first"><strong>Interactions Window</strong></p>
+<img alt="_images/Screenshot-Bonds1.png" src="_images/Screenshot-Bonds1.png" />
+<p>This window is used to enter information about interactions between atoms in the lattice.</p>
+</li>
+<li><p class="first"><strong>Parameter Window</strong></p>
+<img alt="_images/Screenshot-Parameters1.png" src="_images/Screenshot-Parameters1.png" />
+<p>This window is used to enter information about free parameters which must be solved for given dispersion data.  For more information, see <a class="reference external" href="parameters.html"><em>Parameter Fitting</em></a>.</p>
+</li>
+<li><p class="first"><strong>Processes Window</strong></p>
+<img alt="_images/Screenshot-Processes1.png" src="_images/Screenshot-Processes1.png" />
+<p>Large computations such as calculation of the ground state, dispersion, and cross section, as well as parameter fitting are all run in separate processes which can be managed in this window.</p>
+</li>
+</ul>
+</blockquote>
+<p>If any of these windows are closed, they can be brought back from the &#8220;Windows&#8221; menu on the main window.</p>
+<div class="section" id="generating-a-lattice">
+<h2>Generating a Lattice<a class="headerlink" href="#generating-a-lattice" title="Permalink to this headline">¶</a></h2>
+<p>The first thing you must do is generate a crystal lattice.  To do this you must enter information in the Crystallographic Information Window and click the &#8220;Generate&#8221; button.</p>
+<p>You must enter the Space group number and dimensions of the crystallographic as well as magnetic unit cells.  The cutoff cell is at least as large as the magnetic unit cell.  If any magnetic interactions between atoms span a length longer than the magnetic unit cell, then the cutoff cell should be made large enough to contain the interaction.  The first cutoff cell will be displayed in the main window.</p>
+<p><strong>Unit Cell</strong></p>
+<p>For the crystallographic unit cell, you must enter a, b, and c as well as alpha, beta, and gamma.  a, b, and c are the lengths of the three axes on the unit cell.  Alpha, beta, and gamma are the angles between the three axes.  At the time of this writing, this information is unimportant because the 3D model is displayed with cubic unit cells.</p>
+<p><strong>Magnetic Cell / Cutoff</strong></p>
+<p>For the magnetic and cutoff cells; Na, Nb, and Nc are the size of the cell in units of crystallographic unit cells.  For example, if Na = 2, Nb = 2, and Nc =2; the cell will be a 2 by 2 by 2 block of crystallographic unit cells.</p>
+<p><strong>Atoms</strong></p>
+<p>The number of unique atoms (atoms that are not translated into each other using the symmetry operations of the space group) to be defined can be set using the spinner labeled “Atoms:” This will set the size of the atom table at the bottom of the window.
+Each atom is given a name, atomic number, valence charge, coordinates, and single ion anisotropy values.  The name is completely up to the preference of the user.  The atomic number is meant to eventually be used to select a color and size for the display of the atom, but is currently not used.  The color is currently random, and all the sizes are the same.  &#8216;Valence&#8217; is an integer value to describe the valence electrons on the atom.  For example, &#8216;1&#8217; and &#8216;-2&#8217; would be acceptable values.  ‘x’, ‘y’, and ‘z’ are the coordinates of the atom in the crystallographic unit cell in units of the axes of the cell.  These should really read ‘a’, ‘b’, and ‘c’, but since everything is being displayed orthogonally, they are equivalent.  These values must be less than one; otherwise they would be outside of the unit cell.  Last, are the single ion anisotropy terms, ‘Dx’, ‘Dy’, and ‘Dz’.  These describe a tendency for a spin to lie along a certain axis and default to 0.  The spin magnitude is, as you would expect, the magnitude of the atom&#8217;s spin.</p>
+</div>
+<div class="section" id="adding-interactions">
+<h2>Adding Interactions<a class="headerlink" href="#adding-interactions" title="Permalink to this headline">¶</a></h2>
+<p>The &#8220;Bonds&#8221; window is used to add interactions between the spins of atoms.  Atom Number is the unique identifying number of the atom, which can be seen next to each atom in the 3D model displayed in the main window.  Na, Nb, and Nc are the coordinates of the crystallographic unit cell in directions a, b, and c, which are currently the same as x, y, z in the main window display.  The box on the very right can be clicked to turn the bond on or off.  An easier way of adding interactions involves selecting atoms in the 3D display of the main window.  To do this, Select &#8220;Bond Creation&#8221; from the &#8220;Mode&#8221; menu on the main window.  Then click on an atom and then another atom to bond it to.  This will add an entry in the &#8220;Bonds&#8221; window connecting the two atoms.</p>
+<p>The Jij Matrix is the matrix describing the energy of the interaction between the two atoms, where the energy associated with an atom’s spin is given by the Heisenberg Hamiltonian:</p>
+<div class="math">
+<p><img src="_images/math/c6a26215b9a82c1c368a1b4b2fc8d9db8cc26fe0.png" alt="E_i = \sum_j -\vec{S_i}J_{ij}\vec{S_j} - D_xS_{ix}^2 - D_yS_{iy}^2 - D_zS_{iz}^2" /></p>
+</div><p>Summed over all Sj, where Si is the spin of the atom and Sj is the spin of the atom interacting with Si.  Dx, Dy, and Dz are the single ion anisotropy terms.</p>
+<p>The values in these Jij matrices can either be fixed, or they can be free parameters and found with a fitting algorithm described later.  The Jij Matrix Column header can be clicked to toggle between displaying parameter names and values.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <h3><a href="index.html">Table Of Contents</a></h3>
+            <ul>
+<li><a class="reference external" href="">Getting Started</a><ul>
+<li><a class="reference external" href="#generating-a-lattice">Generating a Lattice</a></li>
+<li><a class="reference external" href="#adding-interactions">Adding Interactions</a></li>
+</ul>
+</li>
+</ul>
+
+            <h4>Previous topic</h4>
+            <p class="topless"><a href="install.html"
+                                  title="previous chapter">Installing Spinwaves</a></p>
+            <h4>Next topic</h4>
+            <p class="topless"><a href="ground_state.html"
+                                  title="next chapter">Finding the Ground State</a></p>
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="_sources/model.txt"
+                     rel="nofollow">Show Source</a></li>
+            </ul>
+          <div id="searchbox" style="display: none">
+            <h3>Quick search</h3>
+              <form class="search" action="search.html" method="get">
+                <input type="text" name="q" size="18" />
+                <input type="submit" value="Go" />
+                <input type="hidden" name="check_keywords" value="yes" />
+                <input type="hidden" name="area" value="default" />
+              </form>
+              <p class="searchtip" style="font-size: 90%">
+              Enter search terms or a module, class or function name.
+              </p>
+          </div>
+          <script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="ground_state.html" title="Finding the Ground State"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="install.html" title="Installing Spinwaves"
+             >previous</a> |</li>
+        <li><a href="index.html">Spinwaves v0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2009, Thomas Sarvey, William Ratcliff, William Flynn.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.6.3.
+    </div>
+  </body>
+</html>

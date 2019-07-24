@@ -1,0 +1,109 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Parameter Fitting &mdash; Spinwaves v0.1 documentation</title>
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.1',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Spinwaves v0.1 documentation" href="index.html" />
+    <link rel="prev" title="Calculating the Cross Section" href="cross_section.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="cross_section.html" title="Calculating the Cross Section"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Spinwaves v0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="parameter-fitting">
+<h1>Parameter Fitting<a class="headerlink" href="#parameter-fitting" title="Permalink to this headline">¶</a></h1>
+<p>Unknown values in the Jij matrices describing the interactions between atoms can be solved for with dispersion data.  First, you must specify which values are to be found, their upper and lower bounds, as well as other parameters which must have the same values.  This is done in the parameter window.</p>
+<img alt="_images/Screenshot-Parameters1.png" src="_images/Screenshot-Parameters1.png" />
+<p>This window will pop up with the “Bonds” window to make editing parameters in the Jij matrices easier.  If these matrices are known, then you will not need to use this window.  However, if you will be fitting parameters in these matrices, this window can make editing parameters easier.  On the left, parameters can be “tied” together so that they are forced to have the same values.  To do this, click on a cell and then holding Ctrl, click on other cells to tie to that cell.  A different color will be used to highlight each set of tied parameters.  Click on cells on the right to change parameter properties such as upper and lower bound.</p>
+<p>Once all parameter information is entered, go to “Fit Parameters” in the “Compute” menu.  The following window will appear:</p>
+<img alt="_images/Screenshot-ParameterFit.png" src="_images/Screenshot-ParameterFit.png" />
+<p>The data file is a file containing the dispersion data to fit to.  It has the format:</p>
+<div class="highlight-python"><pre>h-coordinate h-error k-coordinate k-error l-coordinate l-error w-value w-error</pre>
+</div>
+<p>Each value is separated by a space and each data point is on it&#8217;s own line.  Comment lines can be added by starting a line with the “#” character.  H,k, and l error are not currently used in the calculations.</p>
+<p>Lattice size is refering to how large you would like to make the lattice to reduce edge effects, just like when calculating the ground state.
+The fitting algorithm you choose will depend on the system being worked on. The local optimizer will be much faster than the simulated annealing fitter, but may not work for systems with local minima which the local optimizer will get stuck in.
+The ground state must currently be calculated.  In the future you will be able to load this information from a file.
+The Simulated Annealing Section is the exact same information one would enter to calculate the ground state and is described above in the section on finding the ground state.</p>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <h4>Previous topic</h4>
+            <p class="topless"><a href="cross_section.html"
+                                  title="previous chapter">Calculating the Cross Section</a></p>
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="_sources/parameters.txt"
+                     rel="nofollow">Show Source</a></li>
+            </ul>
+          <div id="searchbox" style="display: none">
+            <h3>Quick search</h3>
+              <form class="search" action="search.html" method="get">
+                <input type="text" name="q" size="18" />
+                <input type="submit" value="Go" />
+                <input type="hidden" name="check_keywords" value="yes" />
+                <input type="hidden" name="area" value="default" />
+              </form>
+              <p class="searchtip" style="font-size: 90%">
+              Enter search terms or a module, class or function name.
+              </p>
+          </div>
+          <script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="cross_section.html" title="Calculating the Cross Section"
+             >previous</a> |</li>
+        <li><a href="index.html">Spinwaves v0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2009, Thomas Sarvey, William Ratcliff, William Flynn.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.6.3.
+    </div>
+  </body>
+</html>
