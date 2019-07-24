@@ -1,0 +1,37 @@
+
+__global__ void
+cudaBorn(const int3 Rdims, const int3 Qdims, const real density[],
+	 const real x[], const real y[], const real z[],
+	 const real Qx[], const real Qy[], const real Qz[],
+	 int qxi, cplx result[])
+{
+    const int idx = (blockIdx.x + blockIdx.y*gridDim.x)*blockDim.x + threadIdx.x;
+    const int qzi = idx%Qdims.z;
+    const int qyi = (idx/Qdim.z)%Qdims.y;
+
+    int xi, yi, zi;
+    int densityidx = 0;
+    real Re = 0;
+    real Im = 0;
+
+    if (qyi >= Qdims.y || qzi >= Qdims.z) return;
+
+    const real qx=Qx[qxi], qy=Qy[qyi], qz=Qz[qzi];
+    for (xi=0; xi < Rdims.x; xi++) {
+        const real xqx = x[xi]*qx;
+        for (yi=0; yi < Rdims.y; yi++) {
+            const real yqy = y[yi]*qy;
+# pragma unroll 4
+            for (zi=0; zi < Rdims.z; zi++) {
+                const real QdotR = xqx + yqy + qz*z[zi];
+                real cx,sx;
+                sincos(QdotR,&sx,&cx);
+                Re += density[densityidx]*cx;
+                Im += density[densityidx]*sx;
+                densityidx++;
+            }
+        }
+    }
+    result[idx].x = Re;
+    result[idx].y = Im;
+}
