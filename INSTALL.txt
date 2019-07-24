@@ -1,0 +1,39 @@
+DEPENDENCIES:
+
+	-Python 2.5-2.6
+	-wxPython
+	-numpy
+	-matplotlib
+	-sympy
+	-scipy
+	-vtk
+
+	Most Linux distrobutions will come with a version of Python.  To check
+	your version, open python in the shell.  The version will be printed.
+
+	Vtk can be aqcuired from:
+	www.vtk.org
+
+	All other dependencies should be handled automatically by setuptools
+	when the setup.py script is run.  However, since this has proven to be
+	error-prone alternate methods of resolving these dependencies have been
+	given below.
+
+	
+	Ubuntu/Debian/Any Distrobution using Aptitude Users:
+	
+	A schell script has been included to automatically download all
+	dependencies (other than Python itself) using aptitude.  The script
+	will download and install the current versions of numpy, matplotlib,
+	sympy, scipy, and vtk.  wxPython2.8 will be installed, although 2.6 will
+	work as well.
+
+INSTALLING:
+
+	After reading the section above on dependencies, simply install by
+	opening a shell in the spinwaves top level directory and typing:
+	
+		sudo python setup.py install
+
+	You should now be able to run the spinwaves application by typing
+	'spinwaves' in the shell.

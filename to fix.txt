@@ -1,0 +1,20 @@
+- A bond can be deactivated, but nothing happens until "generate" button is pressed.
+  However, if the session is saved and reloaded, it is as if the "generate" button was pressed.
+  Deactivated bonds dissapear.
+  
+- Scroll bars should be added to bond and parameter windows.
+
+- menu names could be changed/reorganized.
+
+- Code could be reogranized to 1) fit MVC 2)organize GUI Main into several files.
+
+-minor, but in Session file, line ~951, it seems that translating the atom back to the first cuttoff cell should
+be unneccessary since it must exist as an internal-cellular bond to have translated to an intercellular bond.
+
+-Look into safe ways of killing processes.  Right now, the terminate() method is used, which has the potential to
+corrupt the queue if it is being accessed when the process is terminated.
+
+-Make bond and parameter frames have a scroll bar when their size increases, rather than
+automatically increasing the frame size.
+
+-Before Closing, check if work has been saved.
